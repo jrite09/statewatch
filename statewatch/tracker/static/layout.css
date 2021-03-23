@@ -1,13 +1,14 @@
-/* input[name="navbar-links"] {
-    font-size: 10em;
-} */
 .navbar-brand {
     font-size: 1.6em;
 }
 .nav-link {
     font-size: 1.3em;
 }
-
-/* #login-button {
-    float: left;
+/* .lead {
+    font-size: 1.3em;
 } */
+
+body {
+    padding-top: 65px;
+    background-color: #f8f8ff;
+}
