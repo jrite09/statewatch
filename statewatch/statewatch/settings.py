@@ -1,4 +1,4 @@
-from secrets import *
+from .secrets import SECRET_KEY
 
 """
 Django settings for statewatch project.
