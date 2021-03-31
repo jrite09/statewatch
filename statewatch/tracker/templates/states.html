@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  <title>Statewatch - List of States</title>
+{% endblock title %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 text-center">
+        <h1 class="display-2">States</h1>
+        <h2 class="display-6">These States are currently supported by Statewatch.</h2>
+        <p class="lead">Click a link to view all currently active bills for that state. More coming soon!</p>
+      </div>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+      <div class="row col-lg-6 col-md-8 col-sm-10 text-center list-group">
+        {% for state in states %}
+          <a class="list-group-item list-group-item-action" href="{% url 'tracker:billState' state.state %}">{{ state.state }}</a>       
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock body %}

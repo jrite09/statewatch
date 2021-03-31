@@ -4,9 +4,10 @@
 .nav-link {
     font-size: 1.3em;
 }
-/* .lead {
-    font-size: 1.3em;
-} */
+
+th {
+    padding: 400px;
+}
 
 body {
     padding-top: 65px;
