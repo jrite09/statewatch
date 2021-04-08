@@ -4,7 +4,7 @@ from tracker.models import State, Legislature, Bills
 
 # Create your views here.
 def index(request):
-    return render(request, "index.html")
+    return render(request, "tracker/index.html")
 
 def category_of_states(request):
     list_of_states = State.objects.order_by('state')
@@ -17,16 +17,16 @@ def category_of_states(request):
                 states_with_bills.append(state)
                 break
     # print(states_with_bills)
-    return render(request, "states.html", {'states':list_of_states})
+    return render(request, "tracker/states.html", {'states':states_with_bills})
 
 def bills_by_state(request, state):
     list_of_bills = Bills.objects.order_by('code').filter(legBody__state__state=state)
-    return render(request, "state_bills.html", {'bills':list_of_bills, 'state':state})
+    return render(request, "tracker/state_bills.html", {'bills':list_of_bills, 'state':state})
 
 def bill_page(request, state, code):
     bill = Bills.objects.get(code=code)
-    return render(request, "bill.html", {'bill':bill, 'state':bill.legBody.state, 'code':code})
+    return render(request, "tracker/bill.html", {'bill':bill, 'state':bill.legBody.state, 'code':code})
 
 def results(request):
 
-    return render(request, "results.html")
+    return render(request, "tracker/results.html")

@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  <title>
+    Statewatch - Login
+  </title>
+{% endblock title %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <h1 class="display-3 text-center">
+        Log in to Statewatch
+      </h1>
+
+      <p class="invisible">Unseen</p>
+
+      <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10 col-xs-12">
+        {% if form.errors %}
+          <div class="alert alert-danger" role="alert">
+            Invalid Username or Password
+          </div>
+        {% endif %}
+        
+        <form method="POST" action="{% url 'authentication:login' %}" class="text-center">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="{{ form.username.id_for_label}}" class="form-label display-6">Username:</label>
+            <br>
+            {{ form.username }}
+          </div>
+          <div class="mb-3">
+            <label for="{{ form.password.id_for_label }}" class="form-label display-6">Password:</label>
+            <br>
+            {{ form.password }}
+          </div>
+          <div class="form-text">
+            <p>Don't have an account yet? <a href="{% url 'authentication:create_account' %}">Click here</a> to sign up!</p>
+          </div>
+          <br>
+          <div class="text-center">
+            <button type="submit" class="btn btn-lg btn-dark">Login</button>
+          </div>
+        </form>
+        <p></p>
+      </div>
+    </div>
+  </div>
+{% endblock body %}
