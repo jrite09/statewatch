@@ -1,0 +1,17 @@
+{% extends 'tracker/state_bills.html' %}
+
+{% block title %}
+  <title>Statewatch - Your Saved Bills</title>
+{% endblock title %}
+
+{% block heading %}Favorites{% endblock heading %}
+
+{% block list %}
+  {% if favorites %}
+    {% for bill in favorites %}
+      <a class="list-group-item" href="{% url 'tracker:bill_page' bill.saved_bill.legislature.state.state bill.saved_bill.code %}">{{ bill }}</a>
+    {% endfor %}
+  {% else %}
+    <a class="list-group-item list-group-item-action text-center" href="{% url 'tracker:states' %}">No bills found. Return to States?</a>
+  {% endif %}
+{% endblock list %}

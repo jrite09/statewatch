@@ -1,5 +1,3 @@
-# Required Python packages in order to run this project
-# copied from command "pip freeze"
 argon2-cffi==20.1.0
 asgiref==3.3.1
 beautifulsoup4==4.9.3

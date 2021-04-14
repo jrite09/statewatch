@@ -8,9 +8,24 @@
   <div class="container-fluid">
     <div class="row justify-content-center text-center">
       <h1 class="display-1">{{ state.state }} {{ code }}</h1>
-      <p class="lead" style="font-size: 1.8em;">Last action: {{ bill.date }}</p>
+      <form method="POST" action="{% url 'tracker:bill_page' state code %}">
+        <p class="lead" style="font-size: 1.8em;">
+          Last action: {{ bill.date }}
+          {% if saved %}
+            {% csrf_token %}
+            <input type="submit" class="btn btn-outline-dark" name="unsave" value="Stop Tracking">
+          {% else %}
+            {% csrf_token %}
+            <input type="submit" class="btn btn-outline-dark" name="save" value="Track">
+          {% endif %}
+        </p>
+      </form>
       <h1 class="invisible">John Cena</h1>
     </div>
+
+    
+
+    <!-- Table that holds info pulled from db -->
     <div class="container-fluid col-xl-10 col-lg-8 col-md-8 col-sm-10 col-xs-12">
       <table class="table table-responsive table-bordered border-dark table-hover">
         <thead>
@@ -29,5 +44,6 @@
         </tbody>
       </table>
     </div>
+
   </div>
 {% endblock body %}

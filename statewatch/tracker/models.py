@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 class State(models.Model):
@@ -22,7 +23,7 @@ class Legislature(models.Model):
         return f"{self.state} {self.body}"
 
 class Bills(models.Model):
-    legBody = models.ForeignKey(Legislature, on_delete=models.PROTECT)
+    legislature = models.ForeignKey(Legislature, on_delete=models.PROTECT)
     code = models.CharField(max_length=10)
     name = models.CharField(max_length=64)
     sponsor = models.CharField(max_length=64)
@@ -30,4 +31,11 @@ class Bills(models.Model):
     date = models.CharField(max_length=10)
 
     def __str__(self):
-        return f"{self.code} {self.name} Last Action: {self.date}"
+        return f"{self.legislature.state.abbreviation} {self.code} - {self.name}"
+
+class Favorites(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    saved_bill = models.ForeignKey(Bills, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.saved_bill}"

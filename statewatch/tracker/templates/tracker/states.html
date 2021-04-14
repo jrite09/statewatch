@@ -17,7 +17,7 @@
     <div class="row justify-content-center">
       <div class="row col-lg-6 col-md-8 col-sm-10 text-center list-group">
         {% for state in states %}
-          <a class="list-group-item list-group-item-action" href="{% url 'tracker:billState' state.state %}">{{ state.state }}</a>       
+          <a class="list-group-item list-group-item-action" href="{% url 'tracker:bill_state' state.state %}">{{ state.state }}</a>       
         {% endfor %}
       </div>
     </div>
